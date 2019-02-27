@@ -10,13 +10,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Double lat = 34.7303688 * Math.PI / 180;
-        Double lon = -86.5861037 * Math.PI / 180;
-        Double alt = 183.0;
+        Double lat = 34.765386 * Math.PI / 180;
+        Double lon = -86.657352 * Math.PI / 180;
+        Double alt = 263.0;
 
-        Double X = 312491.0;
-        Double Y = -5238364.0;
-        Double Z = 3613428.0;
+        Double X = 305852.0;
+        Double Y = -5236.604;
+        Double Z = 3616.666;
 
         LatLon latlon = new LatLon(lat ,lon, alt);
         ECEF ecef = new ECEF(latlon.toECEF());
