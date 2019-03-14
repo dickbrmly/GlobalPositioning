@@ -1,33 +1,34 @@
 package GPS;
 
 class ECEF {
-  Double X, Y, Z;
+  double x, y, z,magnetude;
 
-  public ECEF(Double X, Double Y, Double Z) {
-    this.X = X;
-    this.Y = Y;
-    this.Z = Z;
+  public ECEF() {};
+
+  public ECEF(Double x, Double y, Double z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+
+    this.magnetude = Math.pow(this.x,2) + Math.pow(this.y,2) + Math.pow(this.z,2); //  ||v||
   }
 
   public ECEF(ECEF ecef) {
-    this.X = ecef.X;
-    this.Y = ecef.Y;
-    this.Z = ecef.Z;
+    this.x = ecef.x;
+    this.y = ecef.y;
+    this.z = ecef.z;
+
+    this.magnetude = Math.pow(this.x,2) + Math.pow(this.y,2) + Math.pow(this.z,2); //  ||v||
   }
 
-  public LatLon toLatLon() {
-    Constants constants = Constants.getInstance();
+  public ECEF(Position that) {
+    this.x = that.x;
+    this.y = that.y;
+    this.z = that.z;
 
-    Double p = Math.pow(Math.pow(X,2.0) + Math.pow(Y,2.0),0.5);
+    this.magnetude = Math.pow(this.x,2) + Math.pow(this.y,2) + Math.pow(this.z,2); //  ||v||
+  }
 
-    Double ang1 = Math.atan((Z * constants.a) / (p * constants.b));
 
-    Double lat = Math.atan ((Z + constants.er * constants.b * Math.pow(Math.sin(ang1),3.0)) /
-        (p - constants.e2 * constants.a * Math.pow(Math.cos(ang1),3.0)));
-    Double lon = Math.atan (Y/X);
 
-    Double alt = p / Math.cos(lat) - constants.RadiusOfCurvature(lat);
-
-    return new LatLon(lat,lon,alt);
-  }// end of toLatLon
 }//end of class
