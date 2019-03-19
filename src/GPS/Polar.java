@@ -35,7 +35,7 @@ public class Polar {
     //component difference
 
 
-    elevation = atan2(there.alt - here.alt, distance); //more accurate if surface distance is accounted for which
+    elevation = Math.asin((there.alt - here.alt) / distance); //more accurate if surface distance is accounted for which
     //lowers there altitude with respect to here.
 
     azimuth = atan2(Math.sin(there.lon - here.lon) * Math.cos(there.lat), Math.cos(here.lat) * Math.sin(there.lat) - Math.sin(here.lat) * Math.cos(there.lat) * Math.cos(there.lon - here.lon));

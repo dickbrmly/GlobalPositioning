@@ -6,7 +6,7 @@ public class Position {
 
   Constants constants = Constants.getInstance();
 
-  double lat, lon, alt, x, y, z,magnitude;
+  public double lat, lon, alt, x, y, z,magnitude;
 
   public Position() {};
 
